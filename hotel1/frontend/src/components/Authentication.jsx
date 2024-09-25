@@ -5,10 +5,12 @@ import fb from "../../public/data/Auth/fb.jpg";
 import tw from "../../public/data/Auth/twitter.jpg";
 import go from "../../public/data/Auth/google.jpg";
 import Navbar2 from "./Navbar2";
+import { useNavigate } from "react-router-dom";
 
 function Authentication() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
   const [isAdminLogin, setIsAdminLogin] = useState(false); // Toggle between User and Admin Login
+  const navigate=useNavigate();
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -17,6 +19,12 @@ function Authentication() {
   const toggleLoginType = (isAdmin) => {
     setIsAdminLogin(isAdmin); // Switch between User and Admin login
   };
+
+  const adminLogger=()=>{
+    if(isAdminLogin){
+      navigate('/admin');
+    }
+  }
 
   return (
     <div>
@@ -57,7 +65,9 @@ function Authentication() {
                     <input
                       type="email"
                       className="w-full px-4 py-2 border rounded-lg bg-gray-100"
-                      placeholder={`Enter your ${isAdminLogin ? "admin" : "user"} email`}
+                      placeholder={`Enter your ${
+                        isAdminLogin ? "admin" : "user"
+                      } email`}
                     />
                   </div>
                   <div className="mb-4">
@@ -70,7 +80,7 @@ function Authentication() {
                       placeholder="Enter your password"
                     />
                   </div>
-                  <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg">
+                  <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg" onClick={adminLogger}>
                     {isAdminLogin ? "Admin Login" : "User Login"}
                   </button>
                 </form>
