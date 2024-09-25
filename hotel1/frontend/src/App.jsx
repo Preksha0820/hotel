@@ -8,6 +8,7 @@ import Facilities from "./pages/Facilities";
 import AuthPage from "./pages/AuthPage";
 import Navbar2 from "./components/Navbar2";
 import "./index.css"; // Tailwind's CSS file
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/Facilities" element={<Facilities />} />
         <Route path="/RoomsPage" element={<RoomsPage />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/admin" element={<Admin />} />
+
       </Routes>
     </>
   );
