@@ -8,14 +8,19 @@ import Navbar2 from "./Navbar2";
 
 function Authentication() {
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
+  const [isAdminLogin, setIsAdminLogin] = useState(false); // Toggle between User and Admin Login
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
   };
 
+  const toggleLoginType = (isAdmin) => {
+    setIsAdminLogin(isAdmin); // Switch between User and Admin login
+  };
+
   return (
     <div>
-      <Navbar2  />
+      <Navbar2 />
       <div className="min-h-screen flex">
         {/* Left Side: Authentication Options */}
         <div className="w-1/2 bg-gray-100 p-8 flex flex-col justify-center items-center">
@@ -23,15 +28,36 @@ function Authentication() {
             {isLogin ? (
               <>
                 <h2 className="text-xl font-bold mb-4">Login</h2>
+
+                {/* Buttons to switch between User and Admin login */}
+                <div className="flex justify-center mb-4">
+                  <button
+                    className={`px-4 py-2 mx-2 ${
+                      !isAdminLogin ? "bg-blue-500 text-white" : "bg-gray-300"
+                    } rounded-lg`}
+                    onClick={() => toggleLoginType(false)}
+                  >
+                    User Login
+                  </button>
+                  <button
+                    className={`px-4 py-2 mx-2 ${
+                      isAdminLogin ? "bg-blue-500 text-white" : "bg-gray-300"
+                    } rounded-lg`}
+                    onClick={() => toggleLoginType(true)}
+                  >
+                    Admin Login
+                  </button>
+                </div>
+
                 <form>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 ">
+                    <label className="block text-sm font-medium text-gray-700">
                       Email
                     </label>
                     <input
                       type="email"
                       className="w-full px-4 py-2 border rounded-lg bg-gray-100"
-                      placeholder="Enter your email"
+                      placeholder={`Enter your ${isAdminLogin ? "admin" : "user"} email`}
                     />
                   </div>
                   <div className="mb-4">
@@ -40,14 +66,15 @@ function Authentication() {
                     </label>
                     <input
                       type="password"
-                      className="w-full px-4 py-2 border rounded-lg  bg-gray-100"
+                      className="w-full px-4 py-2 border rounded-lg bg-gray-100"
                       placeholder="Enter your password"
                     />
                   </div>
                   <button className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg">
-                    Login
+                    {isAdminLogin ? "Admin Login" : "User Login"}
                   </button>
                 </form>
+
                 <p className="mt-4">
                   Don't have an account?{" "}
                   <button
@@ -68,7 +95,7 @@ function Authentication() {
                     </label>
                     <input
                       type="text"
-                      className="w-full px-4 py-2 border rounded-lg  bg-gray-100"
+                      className="w-full px-4 py-2 border rounded-lg bg-gray-100"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -78,7 +105,7 @@ function Authentication() {
                     </label>
                     <input
                       type="email"
-                      className="w-full px-4 py-2 border rounded-lg  bg-gray-100"
+                      className="w-full px-4 py-2 border rounded-lg bg-gray-100"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -88,7 +115,7 @@ function Authentication() {
                     </label>
                     <input
                       type="password"
-                      className="w-full px-4 py-2 border rounded-lg  bg-gray-100"
+                      className="w-full px-4 py-2 border rounded-lg bg-gray-100"
                       placeholder="Enter your password"
                     />
                   </div>
@@ -96,6 +123,7 @@ function Authentication() {
                     Sign Up
                   </button>
                 </form>
+
                 <p className="mt-4">
                   Already have an account?{" "}
                   <button
@@ -121,7 +149,7 @@ function Authentication() {
               href="#"
               className="flex items-center justify-center w-12 h-12 bg-gray-200 rounded-full"
             >
-              <img src={fb} alt="Google" className="w-6 h-6" />
+              <img src={fb} alt="Facebook" className="w-6 h-6" />
             </a>
             <a
               href="#"
