@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 
 const DeleteRoomForm = ({ onDeleteRoom }) => {
-  const [roomNumber, setRoomNumber] = useState('');
+  const [roomId, setRoomId] = useState(''); // Use roomId instead of roomNumber
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Call the parent function to delete the room
-    onDeleteRoom(roomNumber);
-
-    // Clear the input field
-    setRoomNumber('');
+    onDeleteRoom(roomId); // Pass roomId to delete
+    setRoomId(''); // Clear the input field
 
     alert('Room deleted');
   };
@@ -20,16 +16,16 @@ const DeleteRoomForm = ({ onDeleteRoom }) => {
       <h2 className="text-3xl font-bold mb-6 text-center">Delete a Room</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="roomNumber">
-            Room Number
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="roomId">
+            Room ID
           </label>
           <input 
             type="text" 
-            id="roomNumber"
-            value={roomNumber}
-            onChange={(e) => setRoomNumber(e.target.value)}
+            id="roomId" // Updated to roomId
+            value={roomId}
+            onChange={(e) => setRoomId(e.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            placeholder="Enter room number to delete"
+            placeholder="Enter room ID to delete"
             required
           />
         </div>

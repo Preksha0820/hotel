@@ -9,12 +9,12 @@ import AuthPage from "./pages/AuthPage";
 import Navbar2 from "./components/Navbar2";
 import "./index.css"; // Tailwind's CSS file
 import Admin from "./pages/Admin";
+import Payment from "./pages/payment"; // Import the Payment component
 
 function App() {
   return (
     <>
-      {/* Render Navbar on all pages */}
-    
+      <Navbar2 /> {/* Render Navbar on all pages */}
 
       {/* Define Routes */}
       <Routes>
@@ -25,7 +25,7 @@ function App() {
         <Route path="/RoomsPage" element={<RoomsPage />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/admin" element={<Admin />} />
-
+        <Route path="/payment" element={<Payment />} /> {/* Add payment route */}
       </Routes>
     </>
   );

@@ -5,8 +5,12 @@ const Sidebar = ({ onSidebarClick }) => {
     <div className="w-1/5 bg-gray-800 text-white p-5">
       <h1 className="text-2xl font-bold mb-10">Hotel Admin</h1>
       <ul>
+        <li onClick={() => onSidebarClick('newRoomAllotment')} className="cursor-pointer">
+          New Room Allotment Request
+        </li>
+
         <li className="mb-4 hover:bg-gray-600 p-2 rounded cursor-pointer" onClick={() => onSidebarClick('addRoom')}>
-          Add Room
+          Allot Room
         </li>
         <li className="mb-4 hover:bg-gray-600 p-2 rounded cursor-pointer" onClick={() => onSidebarClick('deleteRoom')}>
           Delete Room

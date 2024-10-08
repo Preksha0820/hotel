@@ -8,21 +8,23 @@ const AddRoomForm = ({ onAddRoom }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Create a new room object
+    // Create a new room object with the correct keys
     const newRoom = {
-      roomNumber,
-      roomTypeId,
-      roomType,
+      room_number: roomNumber, // Match the key expected by the backend
+      room_type_id: roomTypeId, // Match the key expected by the backend
+      status: 'available', // You might want to add a status
+      price_per_night: 100, // Placeholder price, modify as needed
+      description: 'A new room added', // Placeholder description, modify as needed
     };
-
+  
     // Pass the new room to the parent component
     onAddRoom(newRoom);
-
+  
     // Clear form fields
     setRoomNumber('');
     setRoomTypeId('');
     setRoomType('family');
-
+  
     alert('Room added');
   };
 
